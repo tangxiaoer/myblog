@@ -1,10 +1,9 @@
 <template>
-    <div>
+    <div class="home">
         <noah-header></noah-header>
         <noah-toper></noah-toper>
         <noah-info></noah-info>
         <noah-main></noah-main>
-
     </div>
 </template>
 
@@ -12,7 +11,7 @@
 import header from '../components/header.vue'
 import toper from '../components/top.vue'
 import main from '../components/preview.vue'
-import leftlist from '../components/leftlist.vue'
+import rightlist from '../components/rightlist.vue'
 export default {
     data(){
         return{
@@ -28,7 +27,10 @@ export default {
             'noah-header':header,
             'noah-toper':toper,
             'noah-main':main,
-            'noah-info':leftlist
+            'noah-info':rightlist
     }
 }
 </script>
+
+<style>
+</style>

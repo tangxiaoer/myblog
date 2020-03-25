@@ -1,25 +1,66 @@
 <template>
-<div class="main">
-    <h1>这是一篇测试文章</h1>
-    <h2>123124123</h2>
+<div>
+    <div class="title">
+    </div>
+    <div class="main">
+        <el-col :span="24" class="s-item tcommonBox" v-for="(item,index) in list" :key="'article'+index">
+            <header>
+                <h1>
+                    TEST THE MAIN PAGE
+                </h1>
+            </header>       
+            <div class="viewdetail">
+                <a class="tcolors-bg" :href="'#/DetailShare?aid='+item.id" target="_blank">
+                    阅读全文>>
+                </a>
+            </div>
+            <hr/>
+        </el-col>
+    </div>
 </div>
 </template>
 
 
+<script>
+export default {
+    data(){
+        return{
+            list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        }
+    }
+}
+</script>
+
 <style>
-.main{
-    width:68%;
-    height: 350px;
+.title{
+    width:50%;
+    height: 30px;
     margin:auto;
     position: relative;
-    top:-260px;
-    left:230px;
+    top:-250px;
+    left:-170px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(255, 255, 255, 0.822);
+    background: rgba(237, 240, 234, 0.822);
     border-radius:5px;
     z-index: 1;
+}
+.main{
+    width:49.5%;
+    height:auto;
+    margin:auto;
+    position: absolute;
+    top:850px;
+    left:215px;
+    padding: 40px 0;
+    font-size: 16px;
+    opacity: 0.98;
+    background: rgba(237, 240, 234, 0.822);
+    border-radius:5px;
+    z-index: 1;
+    overflow:hidden;
+    zoom:1;
 }
 
 </style>

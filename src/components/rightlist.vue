@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="right">
     <div class="myinfo">
         <img alt="" src="../../static/img/info01.jpg"/>
          <div class="myinco">
@@ -108,18 +108,19 @@ export default {
 
 <style>
 .myinfo{
-    width:28%;
-    height: 350px;
+    width:20%;
+    height: 300px;
     margin:auto;
     position: relative;
-    top:400px;
-    left:-530px;
+    top:360px;
+    left:370px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(255, 255, 255, 0.822);
+    background: rgba(237, 240, 234, 0.822);
     border-radius:5px;
     z-index: 1;
+    overflow: hidden;
 }
 .myinfo:hover{
     transform: translate(0,-2px);
@@ -128,25 +129,26 @@ export default {
 
 .myinfo img{
     width:95%;
-    height:250px;
+    height:200px;
     position: absolute;
     top:20px;
     left:10px;
 }
 
 .likeme{
-    width:28%;
+    width:20%;
     height: 150px;
     margin:auto;
     position: relative;
-    top:440px;
-    left:-530px;
+    top:380px;
+    left:370px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(255, 255, 255, 0.822);
+    background: rgba(237, 240, 234, 0.822);
     border-radius:5px;
     z-index: 1;
+    overflow: hidden;
 }
 .likeme:hover{
     transform: translate(0,-2px);
@@ -156,8 +158,8 @@ export default {
 
 .myinco a{
    position: relative;
-   top: 280px;
-   left:-20px;
+   top: 200px;
+   left:0px;
    display: inline-block;
 }
 .myinco a i{
@@ -180,8 +182,8 @@ export default {
 }
 .myincotwo a{
    position: relative;
-   top: 290px;
-   left:-20px;
+   top: 220px;
+   left:0px;
    display: inline-block;
 }
 .myincotwo a i{
