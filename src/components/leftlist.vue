@@ -53,23 +53,71 @@
              </el-tooltip>
          </div>
     </div>
-    <div class="likeme">
+    <div class="likeme" @click="likemec">
+        <h1 class="liked" v-if="!firstlikeme">Thank You~</h1>
+        <h1 class="liked" v-if="likedme">NOOOOOOO！</h1>
+        <p>
+            Give me a heart~!
+        </p>
+        <div class="">
+            <svg class="icon" aria-hidden="true" style="color:white" width="200%" v-show="!loveme">
+                  <use xlink:href="#icon-fab"></use>
+            </svg>
+            <svg class="icon" aria-hidden="true" style="color:white" width="200%" v-show="loveme">
+                  <use xlink:href="#icon-zan"></use>
+            </svg>
+            <span>{{likeNum}}</span>
+        </div>
+    </div>
+    <div class="blank">
     </div>
 </div>
 </template>
 
+<script>
+export default {
+    data(){
+        return {
+            likeNum:0,
+            loveme:false,
+            firstlikeme: true,
+            likedme:null
+        }
+    },
+    methods:{
+        likemec(){
+            if(this.firstlikeme)
+            {
+               this.likeNum+=1;
+               this.loveme=true;
+               this.firstlikeme=false;
+               this.likedme=false;
+            }else if(!this.firstlikeme)
+            {
+                this.likeNum-=1;
+                this.loveme=false;
+                this.firstlikeme=true;
+                this.likedme=true;
+            }
+        },
+        
+    }
+    
+}
+</script>
+
 <style>
 .myinfo{
-    width:30%;
+    width:28%;
     height: 350px;
     margin:auto;
     position: relative;
     top:400px;
-    left:-500px;
+    left:-530px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(240, 239, 239, 0.822);
+    background: rgba(255, 255, 255, 0.822);
     border-radius:5px;
     z-index: 1;
 }
@@ -87,16 +135,16 @@
 }
 
 .likeme{
-    width:30%;
+    width:28%;
     height: 150px;
     margin:auto;
     position: relative;
     top:440px;
-    left:-500px;
+    left:-530px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(240, 239, 239, 0.822);
+    background: rgba(255, 255, 255, 0.822);
     border-radius:5px;
     z-index: 1;
 }
@@ -153,5 +201,15 @@
     background: rgb(44, 204, 244);
     color:hotpink;
 
+}
+.likeme{
+    font-size: 35px;
+    color:red;
+    user-select: none;
+}
+.liked{
+    color:red;
+    font-size: 20px;
+    position: relative;
 }
 </style>

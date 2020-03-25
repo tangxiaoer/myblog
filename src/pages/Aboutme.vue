@@ -9,7 +9,7 @@
 <script>
 import header from '../components/header.vue'
 import toper from '../components/top.vue'
-import myinfo from '../components/myinfo.vue'
+import leftlist from '../components/leftlist.vue'
 export default {
     data(){
         return{
@@ -19,7 +19,7 @@ export default {
     components: { //定义组件
             'noah-header':header,
             'noah-toper':toper,
-            'noah-info':myinfo
+            'noah-info':leftlist
     }
 }
 </script>

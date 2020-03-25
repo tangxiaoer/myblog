@@ -14,7 +14,6 @@
 						</el-submenu>
 						<el-submenu index="/Aboutme">
 							<template slot="title"><i class="fa fa-wa fa-flask"></i> 杂言碎语</template>
-							<el-menu-item v-for="(item,index) in projectList" :key="'class2'+index" index=""><a :href="item.nav_url" target="_blank">{{item.nav_name}}</a></el-menu-item>
 						</el-submenu>
 						<el-menu-item index="/Reward"><i class="fa fa-wa fa-cny"></i> 赞赏</el-menu-item>
 						<!--<el-menu-item index="/Friendslink"><i class="fa fa-wa fa-users"></i> 伙伴</el-menu-item>-->
