@@ -108,16 +108,16 @@ export default {
 
 <style>
 .myinfo{
-    width:20%;
+    width:25%;
     height: 300px;
     margin:auto;
     position: relative;
     top:360px;
-    left:370px;
+    left:420px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(237, 240, 234, 0.822);
+    background: rgba(230, 244, 249, 0.8);
     border-radius:5px;
     z-index: 1;
     overflow: hidden;
@@ -136,16 +136,16 @@ export default {
 }
 
 .likeme{
-    width:20%;
+    width:25%;
     height: 150px;
     margin:auto;
     position: relative;
     top:380px;
-    left:370px;
+    left:420px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(237, 240, 234, 0.822);
+    background: rgba(230, 244, 249, 0.8);
     border-radius:5px;
     z-index: 1;
     overflow: hidden;

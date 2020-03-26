@@ -2,36 +2,65 @@
 <div>
     <div class="title">
     </div>
-    <div class="main">
-        <el-col :span="24" class="s-item tcommonBox" v-for="(item,index) in list" :key="'article'+index">
-            <header>
-                <h1>
-                    TEST THE MAIN PAGE
-                </h1>
-            </header>       
-            <div class="viewdetail">
-                <a class="tcolors-bg" :href="'#/DetailShare?aid='+item.id" target="_blank">
-                    阅读全文>>
-                </a>
-            </div>
-            <hr/>
-        </el-col>
+    <div class="brother">
     </div>
+   <div class="textbox" v-for="(item,index) in list" :key="'article'+index">
+   <div class="label">
+       {{item.type}}
+   </div>
+   <div class="shadow">
+   </div>
+   <h1>{{item.title}}</h1>
+   <div class="abstract">
+       {{item.abstract}}
+   </div>
+    <hr class="line">
+   </div>
+
+   
 </div>
 </template>
 
 
 <script>
+import axios from 'axios'
+import qs from 'qs'
 export default {
     data(){
         return{
-            list:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+            list:[],
+            res:null,
+            title:'',
+            liked:'',
+            text:''
+        }
+    },
+    mounted:function(){
+        this.loadData();//需要触发的函数
+    },
+    methods:{
+        loadData()
+        {            
+            //get 请求接口            
+            var _this=this;           
+             _this.$axios.post('http://127.0.0.1:8802/get_article',{             
+             })           
+             .then(function (response) {
+                // _this.title=response.data[0]['title']
+                // _this.liked=response.data[0]['clike']
+                // _this.text=response.data[0]['text']
+                _this.list=response.data
+             })            
+            .catch(error=>{                
+                console.log(error)             
+            })          
         }
     }
 }
 </script>
 
 <style>
+
 .title{
     width:50%;
     height: 30px;
@@ -42,25 +71,71 @@ export default {
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(237, 240, 234, 0.822);
+    background: rgba(230, 244, 249, 0.8);
     border-radius:5px;
     z-index: 1;
 }
-.main{
-    width:49.5%;
-    height:auto;
+
+.textbox{
+    width:50%;
+    height: 150px;
     margin:auto;
-    position: absolute;
-    top:850px;
-    left:215px;
+    position: relative;
+    top:-200px;
+    left:-170px;
     padding: 40px 0;
-    font-size: 16px;
+    font-size: 15px;
     opacity: 0.98;
-    background: rgba(237, 240, 234, 0.822);
+    background: rgba(230, 244, 249, 0.8);
     border-radius:5px;
     z-index: 1;
-    overflow:hidden;
-    zoom:1;
+}
+
+.textbox h1{
+    position: absolute;
+    left:5px;
+    top:20px;
+    font-size: 18px;
+}
+.abstract{
+    position: absolute;
+    left:200px;
+    top:65px;
+    font-size: 14px;
+    text-align: left;
+}
+.line{
+    position: relative;
+    margin-top:178px;
+    background-color:rgb(214, 212, 212);
+    height:1px;
+}
+.label{
+    border-color: #97dffd;
+    -webkit-box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 1px 5px 0px rgba(0,0,0,0.12);
+    background-color:#97dffd;
+    margin:5px 0 15px 2px;
+    font-size:14px;
+    border-radius: 0 4px 4px 0;
+    padding:7px 11.2px 7px 32px;
+    display: inline-block;
+    color:#fff;
+    position: absolute;
+    top:-10px;
+    left:-20px;
+    padding-left:18px!important;
+}
+.shadow{
+    border-style: solid;
+    border-width: 0px 0px 18px 18px;
+    border-color: transparent transparent rgb(8, 8, 8) transparent;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    left:-18px;
+    top:28px;
+    -webkit-transform: rotate(-90deg);
 }
 
 </style>
