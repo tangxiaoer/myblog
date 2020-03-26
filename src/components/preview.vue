@@ -16,6 +16,9 @@
    </div>
     <hr class="line">
    </div>
+   <div class="more">
+       点击加载更多
+   </div>
 
    
 </div>
@@ -136,6 +139,23 @@ export default {
     left:-18px;
     top:28px;
     -webkit-transform: rotate(-90deg);
+}
+.more{
+    width:50%;
+    background-color: rgb(0, 238, 255);
+    border-color:#478eea;
+    border-radius: 3px;
+    position: absolute;
+    color:#fff;
+    margin:auto;
+    margin-top: -180px;
+    left:212px;
+    height:30px;
+    -webkit-user-select:none;
+}
+.more:hover{
+    background-color: #478eea;
+    cursor:pointer;
 }
 
 </style>
