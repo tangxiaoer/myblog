@@ -74,7 +74,7 @@ export default {
     height: 30px;
     margin:auto;
     position: relative;
-    top:360px;
+    top:410px;
     left:-209px;
     padding: 40px 0;
     font-size: 16px;
@@ -89,7 +89,7 @@ export default {
     height: 150px;
     margin:auto;
     position: relative;
-    top:400px;
+    top:450px;
     left:-209px;
     padding: 40px 0;
     font-size: 15px;
@@ -153,7 +153,7 @@ export default {
     position: relative;
     color:#fff;
     margin:auto;
-    bottom:-410px;
+    bottom:-450px;
     left:-209px;
     height:30px;
     -webkit-user-select:none;
@@ -171,7 +171,7 @@ export default {
     position: relative;
     color:rgb(250, 6, 6);
     margin:auto;
-    bottom:-410px;
+    bottom:-450px;
     left:-209px;
     height:30px;
     -webkit-user-select:none;

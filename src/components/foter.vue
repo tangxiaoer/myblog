@@ -14,7 +14,7 @@
     left:60px;
 }
 .sss{
-    width: 120%;
+    width: 100.7%;
     height:150px;
     background-color:rgba(230, 244, 249, 0.8);
     position: relative;

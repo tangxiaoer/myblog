@@ -20,12 +20,20 @@ export default {
 
         }
     },
+    mounted:function(){
+        this.load();
+    },
     components: { //定义组件
             'noah-header':header,
             'noah-toper':toper,
             'noah-info':rightlist,
             'noah-main':main,
             'noah-footer':footer
+    },
+    methods:{
+        load(){
+            window.scrollTo(0,800);
+        }
     }
 }
 </script>

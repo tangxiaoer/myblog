@@ -47,7 +47,7 @@
             
          </div>
     </div>
-    <div class="likeme" @click="likemec">
+    <div class="likeme" :class='{fiexd:isFixed}' @click="likemec">
         <h1 class="liked" v-if="!firstlikeme">Thank You~</h1>
         <h1 class="liked" v-if="likedme">NOOOOOOO！</h1>
         <p>
@@ -75,8 +75,12 @@ export default {
             likeNum:0,
             loveme:false,
             firstlikeme: true,
-            likedme:null
+            likedme:null,
+            isFixed:false
         }
+    },
+    created(){
+        window.addEventListener('scroll', this.onScroll)
     },
     methods:{
         likemec(){
@@ -94,7 +98,16 @@ export default {
                 this.likedme=true;
             }
         },
-        
+        onScroll() {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+            var offsetTop = this.$refs.topTab.offsetTop
+            // console.log(scrollTop , offsetTop)
+            if (scrollTop > offsetTop) {
+              this.isFixed = true
+            } else {
+              this.isFixed = false
+            }
+        },
     }
     
 }
@@ -142,6 +155,10 @@ export default {
     border-radius:5px;
     z-index: 1;
     overflow: hidden;
+}
+.likeme.fixed{
+    position: fixed;
+    top:0;
 }
 .likeme:hover{
     transform: translate(0,-2px);

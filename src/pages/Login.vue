@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="login">
      <div class="bak">
             <vue-particles 
             color="#dedede"
@@ -138,6 +138,9 @@ export default {
 
 
 <style>
+.login{
+    background-color: #fff;
+}
 .bak{
   position:fixed;
   top:0;
@@ -151,7 +154,9 @@ export default {
     color:aqua;
     padding-top:50px;
     margin-bottom:20px;
-    
+    position: absolute;
+    top:50px;
+    left:630px;
 }
 .error{
   font-size: 10px;
@@ -164,7 +169,8 @@ export default {
     color:rgb(255, 60, 0);
     padding-top:50px;
     margin-bottom:20px;
-    
+    position: absolute;
+    top:50px;
 }
 .loginBox {
     background: #fff;
@@ -172,6 +178,9 @@ export default {
     max-width:320px;
     margin:0 auto;
     margin-top:60px;
+    position: absolute;
+    top:150px;
+    left:580px;
 }
 .loginBox{
     padding-bottom:0;
