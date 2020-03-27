@@ -4,7 +4,7 @@
     </div>
     <div class="brother">
     </div>
-   <div class="textbox" v-for="(item,index) in list" :key="'article'+index">
+   <div class="textbox" v-for="(item,index) in list.slice(0,count)" :key="'article'+index">
    <div class="label">
        {{item.type}}
    </div>
@@ -16,9 +16,10 @@
    </div>
     <hr class="line">
    </div>
-   <div class="more">
+   <div class="more" v-if="count<list.length" @click="loadMore">
        点击加载更多
    </div>
+   <div class="nomore" v-else>没有更多了</div>
 
    
 </div>
@@ -32,6 +33,7 @@ export default {
     data(){
         return{
             list:[],
+            count:5,
             res:null,
             title:'',
             liked:'',
@@ -42,11 +44,14 @@ export default {
         this.loadData();//需要触发的函数
     },
     methods:{
+        loadMore:function(){
+            this.count+=5;
+        },
         loadData()
         {            
             //get 请求接口            
             var _this=this;           
-             _this.$axios.post('http://127.0.0.1:8802/get_article',{             
+             _this.$axios.post('http://175.24.9.165:8001/get_article',{             
              })           
              .then(function (response) {
                 // _this.title=response.data[0]['title']
@@ -65,31 +70,31 @@ export default {
 <style>
 
 .title{
-    width:50%;
+    width:55%;
     height: 30px;
     margin:auto;
     position: relative;
-    top:-250px;
-    left:-170px;
+    top:360px;
+    left:-209px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(230, 244, 249, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     border-radius:5px;
     z-index: 1;
 }
 
 .textbox{
-    width:50%;
+    width:55%;
     height: 150px;
     margin:auto;
     position: relative;
-    top:-200px;
-    left:-170px;
+    top:400px;
+    left:-209px;
     padding: 40px 0;
     font-size: 15px;
     opacity: 0.98;
-    background: rgba(230, 244, 249, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     border-radius:5px;
     z-index: 1;
 }
@@ -103,13 +108,13 @@ export default {
 .abstract{
     position: absolute;
     left:200px;
-    top:65px;
+    top:70px;
     font-size: 14px;
     text-align: left;
 }
 .line{
     position: relative;
-    margin-top:178px;
+    margin-top:190px;
     background-color:rgb(214, 212, 212);
     height:1px;
 }
@@ -141,21 +146,36 @@ export default {
     -webkit-transform: rotate(-90deg);
 }
 .more{
-    width:50%;
+    width:55%;
     background-color: rgb(0, 238, 255);
     border-color:#478eea;
     border-radius: 3px;
-    position: absolute;
+    position: relative;
     color:#fff;
     margin:auto;
-    margin-top: -180px;
-    left:212px;
+    bottom:-410px;
+    left:-209px;
     height:30px;
     -webkit-user-select:none;
+    z-index: 99999;
 }
 .more:hover{
     background-color: #478eea;
     cursor:pointer;
+}
+.nomore{
+    width:55%;
+    background-color: rgb(0, 238, 255);
+    border-color:#478eea;
+    border-radius: 3px;
+    position: relative;
+    color:rgb(250, 6, 6);
+    margin:auto;
+    bottom:-410px;
+    left:-209px;
+    height:30px;
+    -webkit-user-select:none;
+    z-index: 99999;
 }
 
 </style>

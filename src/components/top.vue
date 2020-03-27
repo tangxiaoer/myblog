@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="bgsrc" :style="{backgroundImage:`url(${imgUrl})`}"></div>
+        <div class="bgsrc" :style="{backgroundImage:`url(${dataList[0]})`}"></div>
         <div class="scene">
             <div>
                 <span class="" id="noah">Hello World</span>
@@ -22,7 +22,10 @@ export default {
     data(){
         return{
             imgUrl:require('../../static/img/bg01.jpg'),    
-            aboutmeUrl:require('../../static/img/aboutme.jpg')
+            aboutmeUrl:require('../../static/img/aboutme.jpg'),
+            dataList: ['../../static/img/bg01.jpg', '../../static/img/bg02.jpg'],
+            currentIndex: 0, // 默认显示图片
+            timer: null // 定时器
         }
     },
     methods:{
@@ -32,6 +35,7 @@ export default {
     },
     components: { //定义组件
     }
+  
 }
 </script>
 

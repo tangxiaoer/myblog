@@ -44,13 +44,7 @@
                 </svg>
                 </i></a>
              </el-tooltip>
-             <el-tooltip  class="item"  content="More" placement="top" >
-                <a  href="" target="_blank" ><i class="more">
-                 <svg class="icon" aria-hidden="true" style="color:white" width="200%">
-                  <use xlink:href="#icon-more"></use>
-                </svg>
-                </i></a>
-             </el-tooltip>
+            
          </div>
     </div>
     <div class="likeme" @click="likemec">
@@ -111,16 +105,15 @@ export default {
     width:25%;
     height: 300px;
     margin:auto;
-    position: relative;
-    top:360px;
-    left:420px;
+    position: absolute;
+    top:700px;
+    right:150px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(230, 244, 249, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     border-radius:5px;
     z-index: 1;
-    overflow: hidden;
 }
 .myinfo:hover{
     transform: translate(0,-2px);
@@ -139,13 +132,13 @@ export default {
     width:25%;
     height: 150px;
     margin:auto;
-    position: relative;
-    top:380px;
-    left:420px;
+    position: absolute;
+    top:1100px;
+    right:150px;
     padding: 40px 0;
     font-size: 16px;
     opacity: 0.98;
-    background: rgba(230, 244, 249, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     border-radius:5px;
     z-index: 1;
     overflow: hidden;

@@ -10,7 +10,7 @@
 						<el-menu-item index="/"><i class="fa fa-wa fa-home"></i> 首页</el-menu-item>
 						<el-submenu index="/Share">
 							<template slot="title"><i class="fa fa-wa fa-archive"></i> 学习分享</template>
-							<el-menu-item v-for="(item,index) in classListObj" :key="'class1'+index" :index="'/Share?classId='+item.class_id">{{item.cate_name}}</el-menu-item>
+							<el-menu-item class="shared" v-for="(item,index) in classListObj" :key="'class1'+index" :index="'/Share?classId='+item._id">{{item}}</el-menu-item>
 						</el-submenu>
 						<el-submenu index="/Aboutme">
 							<template slot="title"><i class="fa fa-wa fa-flask"></i> 杂言碎语</template>
@@ -67,7 +67,7 @@ export default {
 		return {
 			userInfo: '', //用户信息
 			haslogin: false, //是否已登录
-			classListObj: '', //技术分类
+			classListObj: ['Python','数据库','Web前端'], //技术分类
 			activeIndex: '/', //当前选择的路由模块
 			state: '', //icon点击状态
 			pMenu: true, //手机端菜单打开
@@ -86,6 +86,9 @@ export default {
 		this.routeChange();
 		this.gethaslogin();
 	},
+	mounted:function(){
+        
+    },
 	methods:{
 		// 用户退出登录
 		userlogout: function() {
@@ -141,6 +144,10 @@ export default {
 	background: rgba(161, 241, 124, 0.7);
 }
 
+
+.el-menu-demo.el-submenu.el-menu-item{
+	color:red;
+}
 .el-menu--horizontal>.el-submenu.is-active .el-submenu__title {
 	border-bottom: none!important;
 }
@@ -198,7 +205,7 @@ export default {
 }
 
 .headBox>ul .el-submenu .el-menu .el-menu-item:hover {
-	background: #64609E;
+	background: rgb(158, 111, 96);
 }
 
 /*pc搜索框*/

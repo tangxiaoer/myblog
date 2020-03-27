@@ -8,18 +8,18 @@
 
 <style>
 .foot{
-    position: absolute;
+    position: relative;
     margin:auto;
-    margin-top: -150px;
-    left:300px;
+    bottom: -300px;
+    left:60px;
 }
 .sss{
     width: 120%;
     height:150px;
     background-color:rgba(230, 244, 249, 0.8);
-    position: absolute;
+    position: relative;
     margin:auto;
-    margin-top: 100px;
+   bottom: -150px;
     left:-10px;
 }
 
