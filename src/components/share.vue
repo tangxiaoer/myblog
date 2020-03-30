@@ -52,7 +52,7 @@ export default {
             //get 请求接口            
             var _this=this;           
              _this.$axios.post('http://175.24.9.165:8001/get_article',{       
-                 classid:"all"      
+                 type:"all"      
              })           
              .then(function (response) {
                 // _this.title=response.data[0]['title']

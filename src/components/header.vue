@@ -6,19 +6,25 @@
 			<el-col :span="24">
 				<!-- pc端导航 -->
 				<div class="headBox">
-					<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true" >
-						<el-menu-item index="/"><i class="fa fa-wa fa-home"></i> 首页</el-menu-item>
+					<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true"  active-text-color="#ffd04b">
+						<el-menu-item index="/">首页</el-menu-item>
+
+						
 						<el-submenu index="/Share">
-							<template slot="title"><i class="fa fa-wa fa-archive"></i> 学习分享</template>
-							<el-menu-item class="shared" v-for="(item,index) in classListObj" :key="'class1'+index" :index="'/Share?classId='+item._id">{{item}}</el-menu-item>
+							<template slot="title"> 学习分享</template>
+							<!-- <el-menu-item v-for="(item,index) in classListObj" :key="'class1'+index.id" :index="'/Share?classId='+item.id">{{item.name}}</el-menu-item> -->
+						    <el-menu-item index="/Share?classId=1">Python</el-menu-item>
+							<el-menu-item index="/Share?classId=2">Web前端</el-menu-item>
+							<el-menu-item index="/Share?classId=3">数据库</el-menu-item>
+							<el-menu-item index="/Share?classId=4">杂言碎语</el-menu-item>
 						</el-submenu>
-						<el-submenu index="/Aboutme">
-							<template slot="title"><i class="fa fa-wa fa-flask"></i> 杂言碎语</template>
-						</el-submenu>
-						<el-menu-item index="/Reward"><i class="fa fa-wa fa-cny"></i> 赞赏</el-menu-item>
+
+
+						<el-menu-item index="3"> 学习资源</el-menu-item>
+						<el-menu-item index="4"> 赞赏</el-menu-item>
 						<!--<el-menu-item index="/Friendslink"><i class="fa fa-wa fa-users"></i> 伙伴</el-menu-item>-->
-						<el-menu-item index="/Message"><i class="fa fa-wa fa-pencil"></i> 留言板</el-menu-item>
-						<el-menu-item index="/aboutme"><i class="fa fa-wa fa-vcard"></i> 关于</el-menu-item>
+						<el-menu-item index="5">留言板</el-menu-item>
+						<el-menu-item index="/aboutme"> 关于</el-menu-item>
 						<div index="" class="pcsearchbox">
 							<i class="el-icon-search pcsearchicon"></i>
 							<div class="pcsearchinput" :class="input?'hasSearched':''">
@@ -67,7 +73,7 @@ export default {
 		return {
 			userInfo: '', //用户信息
 			haslogin: false, //是否已登录
-			classListObj: ['Python','数据库','Web前端'], //技术分类
+			classListObj: [{id: 1, name: ''},{id: 2, name: 'Python'},{id:3,name:'Web前端'}], //技术分类
 			activeIndex: '/', //当前选择的路由模块
 			state: '', //icon点击状态
 			pMenu: true, //手机端菜单打开
@@ -139,15 +145,16 @@ export default {
 	z-index: 100;
 }
 
-.headBox li.is-active {
-	/*background: #48456C;*/
+/* .headBox li.is-active {
 	background: rgba(161, 241, 124, 0.7);
+
+}  */
+
+.el-menu--popup-bottom-start{
+	left:200px;
+	background-color:rgb(0, 204, 255);
 }
 
-
-.el-menu-demo.el-submenu.el-menu-item{
-	color:red;
-}
 .el-menu--horizontal>.el-submenu.is-active .el-submenu__title {
 	border-bottom: none!important;
 }
@@ -173,13 +180,18 @@ export default {
 .headBox li .fa-wa {
 	vertical-align: baseline;
 }
+.el-menu--horizontal.ul{
+	font-size: 100px;
+}
+
 
 .headBox ul li.el-menu-item,
 .headBox ul li.el-menu-item.is-active,
 .headBox ul li.el-menu-item:hover,
 .headBox .el-submenu div.el-submenu__title,
 .headBox .el-submenu__title i.el-submenu__icon-arrow {
-	color: rgb(248, 250, 246);
+	color: rgb(250, 246, 246);
+
 	left: 200px;
 }
 
@@ -189,11 +201,22 @@ export default {
 	padding: 0;
 }
 
-.headBox>ul li.el-menu-item:hover,
+
 .headBox>ul li.el-submenu:hover .el-submenu__title {
 	background: #48456C;
 	border-bottom: none;
 }
+.headBox>ul li.el-menu-item:hover{
+	background-color:rgb(248, 8, 40);
+}
+
+
+
+.el-menu-item.is-active {
+      background-color: #07abf7 !important;
+      color: #fff;
+    }
+
 
 .headBox>ul .el-submenu .el-menu,
 .headBox>ul .el-submenu .el-menu .el-menu-item {
@@ -353,7 +376,7 @@ export default {
 
 .hideMenu .el-menu-item,
 .hideMenu .el-submenu__title {
-	color: #fff;
+	color: rgb(252, 10, 10);
 }
 
 .hideMenu>i {
@@ -389,6 +412,7 @@ export default {
 .hideMenu ul.mlistmenu.pshow {
 	display: block;
 }
+
 
 .hideMenu ul.mlistmenu .el-submenu__icon-arrow,
 .mobileBox li.el-menu-item a {
