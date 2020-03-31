@@ -1,9 +1,12 @@
 <template>
     <div>
         <div class="bgsrc" :style="{backgroundImage:`url(${dataList[0]})`}"></div>
+        <div v-show="iscpp" class="cpp">
+            <div v-html="cpp"></div>
+        </div>
         <div class="scene">
             <div>
-                <span class="" id="noah">Hello World</span>
+                <span class="" id="noah">{{title}}</span>
             </div>
         </div>
         <div class="information">
@@ -25,13 +28,50 @@ export default {
             aboutmeUrl:require('../../static/img/aboutme.jpg'),
             dataList: ['../../static/img/bg01.jpg', '../../static/img/bg02.jpg'],
             currentIndex: 0, // 默认显示图片
-            timer: null // 定时器
+            timer: null, // 定时器
+            iscpp:false,
+            i:0,
+            j:0,
+            timer:0,
+            timerj:0,
+            cpp:"",
+            str: '#include &lt;iostream&gt;<br/>using name space std;<br/><br/>void main(){<br/>&nbsp;&nbsp;&nbsp;cout&lt;&lt;"Hello World";<br/>}<br/>................................................................&gt;',
+            title:'',
+            str2:'Hello World'
         }
+    },
+    mounted(){
+         this.typing();
     },
     methods:{
         login(){
             this.$router.push({ path:'/login'  });
+        },
+        typing() {
+            if(this.$route.path=="/")
+            {
+                    if (this.i <= this.str.length) {
+                        this.iscpp=true;
+                        this.cpp = this.str.slice(0, this.i++) + '_';
+                        this.timer = setTimeout(() => {
+                            this.typing();
+                        }, 30);
+
+                    }else if(this.j<=this.str2.length){
+                        this.title=this.str2.slice(0,this.j++);
+                        this.timerj=setTimeout(() => {
+                            this.typing();
+                        }, 50);
+                    } 
+                    else {
+                        clearTimeout(this.timer);
+                        this.iscpp=false;
+                    }
+            }else{
+                this.title=this.str2;
+            }
         }
+            
     },
     components: { //定义组件
     }
@@ -79,6 +119,21 @@ export default {
     background: rgba(230, 244, 249, 0.8);
     border-radius:5px;
     z-index: 1;
+}
+.cpp{
+    text-align: left;
+    width:25%;
+    height: 200px;
+    margin:auto;
+    position: absolute;
+    top:100px;
+    padding: 40px 0;
+    font-size: 16px;
+    opacity: 0.98;
+    background: rgba(13, 13, 14, 0.8);
+    border-radius:5px;
+    z-index: 1;
+    color:red;
 }
 .information h2{
     margin-top:60px;

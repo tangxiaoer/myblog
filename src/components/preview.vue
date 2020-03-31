@@ -115,7 +115,7 @@ export default {
 }
 .line{
     position: relative;
-    margin-top:190px;
+    margin-top:185px;
     background-color:rgb(214, 212, 212);
     height:1px;
 }
@@ -173,7 +173,7 @@ export default {
     color:rgb(250, 6, 6);
     margin:auto;
     bottom:-450px;
-    left:-209px;
+    left:-210px;
     height:30px;
     -webkit-user-select:none;
     z-index: 99999;

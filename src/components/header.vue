@@ -11,7 +11,10 @@
 
 						
 						<el-submenu index="/Share">
-							<template slot="title"> 学习分享</template>
+							<template slot="title">
+							<svg class="icon" aria-hidden="true" style="color:white" width="200%" v-show="!loveme">
+                                 <use xlink:href="#icon-icon_huabanfuben"></use>
+                            </svg>学习分享</template>
 							<!-- <el-menu-item v-for="(item,index) in classListObj" :key="'class1'+index.id" :index="'/Share?classId='+item.id">{{item.name}}</el-menu-item> -->
 						    <el-menu-item index="/Share?classId=1">Python</el-menu-item>
 							<el-menu-item index="/Share?classId=2">Web前端</el-menu-item>
@@ -20,10 +23,20 @@
 						</el-submenu>
 
 
-						<el-menu-item index="3"> 学习资源</el-menu-item>
-						<el-menu-item index="4"> 赞赏</el-menu-item>
+						<el-menu-item index="3"> 
+							<svg class="icon" aria-hidden="true" style="color:white" width="200%" v-show="!loveme">
+                                 <use xlink:href="#icon-baoxiang"></use>
+                            </svg>学习资源</el-menu-item>
+						<el-menu-item index="/reward">
+						    <svg class="icon" aria-hidden="true" style="color:white" width="200%" v-show="!loveme">
+                                 <use xlink:href="#icon-renminbi"></use>
+                            </svg> 赞赏</el-menu-item>
 						<!--<el-menu-item index="/Friendslink"><i class="fa fa-wa fa-users"></i> 伙伴</el-menu-item>-->
-						<el-menu-item index="5">留言板</el-menu-item>
+						<el-menu-item index="/message">
+							<svg class="icon" aria-hidden="true" style="color:white" width="200%" v-show="!loveme">
+                                 <use xlink:href="#icon--liuyanban"></use>
+                            </svg>
+							留言板</el-menu-item>
 						<el-menu-item index="/aboutme"> 关于</el-menu-item>
 						<div index="" class="pcsearchbox">
 							<i class="el-icon-search pcsearchicon"></i>
