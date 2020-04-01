@@ -17,10 +17,10 @@
     <div class="show">
         <div class="showbox" v-for="(item,index) in list.slice(0,count)" :key="'article'+index">
             <h3>{{item.username}}</h3>
+            <div class="head"><img class="headimg" src='../../static/img/tou01.jpg'></div>
             <div class="time">{{item.datetime}}</div>
             <div class="message_show">{{item.message}}</div>
             <div class="answer"><a href="javascript:void(0);" @click="ans()">回复</a></div>
-            
             <hr class=line>
         </div>
      </div>
@@ -38,11 +38,12 @@ export default {
             textarea:'',
             list:[],
             count:10,
-            answerflag:true
+            answerflag:true,
         }
     },
     mounted:function(){
         this.loadData();//需要触发的函数
+       
     },
     methods:{
         sendmsg(){
@@ -147,6 +148,12 @@ export default {
     border-radius:5px;
     z-index: 1;
 }
+.headimg{
+    width:10%;
+    position: absolute;
+    top:25px;
+    left:10px;
+}
 .msginfo{
     position: absolute;
     top:230px;
@@ -214,6 +221,7 @@ export default {
     height:30px;
     -webkit-user-select:none;
     z-index: 99999;
+
 }
 
 </style>
