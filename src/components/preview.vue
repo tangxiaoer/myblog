@@ -40,7 +40,7 @@ export default {
             text:''
         }
     },
-    mounted:function(){
+    created(){
         this.loadData();//需要触发的函数
     },
     methods:{

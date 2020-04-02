@@ -83,9 +83,14 @@ export default {
             ip:''
         }
     },
-    mounted(){
+    created(){
         this.loadData()
     },
+     watch: {
+           // 如果路由有变化，会再次执行该方法
+           '$route':'loadData',
+           '$store.state.keywords':'loadData'
+         },
     methods:{
         likemec(){
             if(this.firstlikeme)
@@ -114,7 +119,7 @@ export default {
         loadData()
         {
             var _this=this
-            _this.$axios.post('http://175.24.9.165:8001/get_liked',{
+            _this.$axios.post('http://175.24.9.165:8002/get_liked',{
 
             }).then(function (response){
                 _this.likeNum=response.data
