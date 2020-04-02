@@ -1,6 +1,6 @@
 <template>
 <div>
-    <img class="foot" src="../../static/img/footer01.png">
+    <img class="foot" src="../../static/img/ft02.png">
     <div class="sss">
         <h1>渝ICP备20002556号-1</h1>
     </div>
@@ -11,8 +11,8 @@
 .foot{
     position: relative;
     margin:auto;
-    bottom: -300px;
-    left:60px;
+    bottom: -175px;
+    left:450px;
 }
 .sss{
     width: 100.7%;

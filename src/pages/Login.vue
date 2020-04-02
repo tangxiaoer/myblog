@@ -51,6 +51,7 @@
 <script type= "text/javascript">
 import axios from 'axios'
 import qs from 'qs'
+
 export default {
     name:'login',
     data(){
@@ -86,7 +87,11 @@ export default {
              .then(function (response) {
                  if(response.data=='1')
                  {
-                      _this.$router.push({ path:'/',query: {haslogin: true}});
+                      //_this.$router.push({ path:'/',query: {haslogin: true}});
+                      sessionStorage.setItem('username',_this.username);
+                       sessionStorage.setItem('haslogin','1');
+                      _this.$router.push({name:'home',params:{haslogin:'true',username:_this.username}});
+
                  }else{
                      _this.error=true;
                  }

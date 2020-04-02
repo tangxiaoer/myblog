@@ -6,6 +6,7 @@ import Aboutme from '@/pages/Aboutme'
 import Share from '@/pages/Share'
 import Reward from '@/pages/Reward'
 import Message from '@/pages/Message'
+import Userinfo from '@/pages/Userinfo'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/message',
       name: 'message',
       component:Message
+    },
+    {
+      path: '/userinfo',
+      name: 'userinfo',
+      component:Userinfo
     }
   ]
 })

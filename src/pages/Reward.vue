@@ -107,10 +107,14 @@ export default {
 .one{
     position: relative;
     top:400px;
+    left:0px;
+    width:100%;
 }
 .two{
     position: relative;
     top:596px;
+    left:0px;
+    width:100%;
 }
 .rewardbox p{
     position: absolute;

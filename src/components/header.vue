@@ -118,9 +118,10 @@ export default {
 				type: 'warning'
 			}).then(() => {
 				// console.log(that.$route.path);
-				that.haslogin=false;
+				sessionStorage.setItem('haslogin','0');
+				that.gethaslogin();
 			    that.$router.push({path:'/'});
-				
+
 			}).catch(() => {
 				//
 			});
@@ -134,8 +135,14 @@ export default {
 		},
 		gethaslogin()
 		{
-			var hasloginf= this.$route.query.haslogin
-			this.haslogin=hasloginf
+			var hasloginf= sessionStorage.getItem('haslogin')
+			if(hasloginf=='1')
+			{
+			    this.haslogin=true;
+			}else{
+				this.haslogin=false;
+			}
+
 		}
 	}
 	

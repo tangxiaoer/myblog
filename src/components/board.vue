@@ -39,22 +39,30 @@ export default {
             list:[],
             count:10,
             answerflag:true,
+            username:''
         }
     },
     mounted:function(){
         this.loadData();//需要触发的函数
-       
     },
     methods:{
         sendmsg(){
             //get 请求接口            
             var _this=this;  
+            if(sessionStorage.getItem('haslogin')!='1')
+            {
+                _this.username='游客';
+            }else
+            {
+                _this.username=sessionStorage.getItem('username')
+            }
             if(_this.textarea==''){
                 alert("内容不能为空")
                 _this.$refs['content'].focus()
             }else{
                  _this.$axios.post('http://175.24.9.165:8001/insert_msg',{
-                      txt: _this.textarea,         
+                      txt: _this.textarea,     
+                      usr:_this.username
              })           
              .then(function (response) {
                  if(response.data=='1')

@@ -48,19 +48,21 @@
          </div>
     </div>
     <div class="likeme" :class='{fiexd:isFixed}' @click="likemec">
-        <h1 class="liked" v-if="!firstlikeme">Thank You~</h1>
-        <h1 class="liked" v-if="likedme">NOOOOOOO！</h1>
-        <p>
+        <div class="">
+            <h1 class="liked" v-if="!firstlikeme">Thank You~</h1>
+        <p class="giveme">
             Give me a heart~!
         </p>
-        <div class="">
+        <div class="number">
             <svg class="icon" aria-hidden="true" style="color:white" width="200%" v-show="!loveme">
-                  <use xlink:href="#icon-fab"></use>
+                  <use xlink:href="#icon-aixin" color="red"></use>
             </svg>
             <svg class="icon" aria-hidden="true" style="color:white" width="200%" v-show="loveme">
-                  <use xlink:href="#icon-zan"></use>
+                  <use xlink:href="#icon-aixin1"></use>
             </svg>
-            <span>{{likeNum}}</span>
+            <span>{{likeNum[0].id}}</span>
+
+        </div>
         </div>
     </div>
     <div class="blank">
@@ -69,34 +71,57 @@
 </template>
 
 <script>
+
 export default {
     data(){
         return {
-            likeNum:0,
+            likeNum:[{"id":0}],
             loveme:false,
             firstlikeme: true,
             likedme:null,
-            isFixed:false
+            isFixed:false,
+            ip:''
         }
     },
-    created(){
-        window.addEventListener('scroll', this.onScroll)
+    mounted(){
+        this.loadData()
     },
     methods:{
         likemec(){
             if(this.firstlikeme)
             {
-               this.likeNum+=1;
+               var newliked=this.likeNum[0].id+1
                this.loveme=true;
                this.firstlikeme=false;
                this.likedme=false;
-            }else if(!this.firstlikeme)
-            {
-                this.likeNum-=1;
-                this.loveme=false;
-                this.firstlikeme=true;
-                this.likedme=true;
+               var _this=this
+               _this.$axios.post('http://175.24.9.165:8001/up_liked',{
+                   newlike:newliked
+               }).then(function (response){
+                   if(response.data=="1")
+                   {
+                       _this.loadData()
+                   }
+               })
+               _this.$axios.post('http://175.24.9.165:8001/insert_ipaddress',{
+                   ip:returnCitySN["cip"],
+                   city:returnCitySN["cname"]
+               }).then(function (response){
+               })
+
             }
+        },
+        loadData()
+        {
+            var _this=this
+            _this.$axios.post('http://175.24.9.165:8001/get_liked',{
+
+            }).then(function (response){
+                _this.likeNum=response.data
+                
+            }).catch(error=>{
+                 console.log(error)   
+            })
         },
         onScroll() {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -223,5 +248,16 @@ export default {
     color:red;
     font-size: 20px;
     position: relative;
+    top:-20px;
+    left:0px;
+}
+.giveme{
+    position: relative;
+    top:-20px;
+    left:0px;
+}
+.number{
+    position: relative;
+    top:-30px;
 }
 </style>
