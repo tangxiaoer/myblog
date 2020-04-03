@@ -4,7 +4,9 @@
         <noah-toper></noah-toper>
         <noah-info></noah-info>
         <noah-board></noah-board>
+        <lazy-render :time="300">
         <noah-footer></noah-footer>
+        </lazy-render>
     </div>
 </template>
 

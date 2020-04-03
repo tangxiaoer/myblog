@@ -28,7 +28,10 @@
 
    
          </div>
+
+        <lazy-render :time="300">
         <noah-footer></noah-footer>
+        </lazy-render>
     </div>
 </template>
 

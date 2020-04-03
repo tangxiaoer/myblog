@@ -1,27 +1,46 @@
 <template>
-<div>
+<div @click="hidesharelist" >
     <div class="title">
     </div>
     <div class="brother">
     </div>
    <div class="textbox" v-for="(item,index) in list.slice(0,count)" :key="'article'+index">
-   <div class="label">
-       {{item.type}}
-   </div>
-   <div class="shadow">
-   </div>
-   <h1>{{item.title}}</h1>
-   <div class="abstract">
-       {{item.abstract}}
-   </div>
-    <hr class="line">
+       <div class="label">
+           {{item.type}}
+       </div>
+       <div class="shadow">
+       </div>
+       <h1>{{item.title}}</h1>
+       <div class="abstract">
+           {{item.abstract}}
+       </div>
+       <div class="bar" @click="settingEvent($event)">
+            <svg class="inco" aria-hidden="true">
+                <use xlink:href="#icon-xiaoxi"></use>
+            </svg>
+              <P class="comment">122条评论</p>
+            <svg class="inco" aria-hidden="true" style="left:360px;top:188px">
+            <use xlink:href="#icon-shoucang"></use>save
+            </svg>
+              <p class="comment" style="left:390px">收藏{{item.save}}</p>
+            <svg class="inco" aria-hidden="true" style="left:460px;top:188px;width:1.7em;height:1.7em;">
+              <use xlink:href="#icon-taoxin"></use>
+            </svg>
+            <p class="comment" style="left:490px">喜欢{{item.clike}}</p>
+            <svg class="inco" aria-hidden="true" style="left:560px;top:188px;" @click="sharelist">
+              <use xlink:href="#icon-fenxiang"></use>
+            </svg>
+            <p class="comment" style="left:590px"  >分享</p>
+            
+       </div>
+        <hr class="line">
    </div>
    <div class="more" v-if="count<list.length" @click="loadMore">
        点击加载更多
    </div>
    <div class="nomore" v-else>没有更多了</div>
-
-   
+   <div class="sharefriend" :style="{left: tranLeft, top: tranTop}" v-if="friendflag"  @click="settingEvent($event)">
+   </div>
 </div>
 </template>
 
@@ -37,7 +56,10 @@ export default {
             res:null,
             title:'',
             liked:'',
-            text:''
+            text:'',
+            friendflag:false,
+            tranLeft:'670px',
+            tranTop:'1070px'
         }
     },
     created(){
@@ -63,7 +85,24 @@ export default {
             .catch(error=>{                
                 console.log(error)             
             })          
+        },
+        sharelist(e){
+            this.tranLeft = (e.pageX-75) + 'px'
+			this.tranTop = (e.pageY+20) + 'px'
+            this.$set(this, 'friendflag', !this.friendflag)
+        },
+        hidesharelist(){
+               this.$set(this, 'friendflag', false);
+               //全局区域内点击时showSettingCon均为false
+           },
+        settingEvent(event){
+               event.stopPropagation(); //此区域不受上面方法的影响
+           },
+        touchstart(e) {
+            this.tranLeft = (e.pageX-75) + 'px'
+			this.tranTop = (e.pageY+20) + 'px'
         }
+
     }
 }
 </script>
@@ -112,6 +151,7 @@ export default {
     top:70px;
     font-size: 14px;
     text-align: left;
+    color:black;
 }
 .line{
     position: relative;
@@ -177,6 +217,44 @@ export default {
     height:30px;
     -webkit-user-select:none;
     z-index: 99999;
+}
+.inco {
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  position: absolute;
+  top:190px;
+  left:220px;
+  color:rgb(179, 179, 179);
+}
+.inco:hover {
+  cursor: pointer;
+  color:red;
+}
+.comment:hover{
+    cursor: pointer;
+    color:lightgreen;
+}
+.comment{
+    position: absolute;
+    top:175px;
+    left:250px;
+    color:rgb(179, 179, 179);
+}
+.sharefriend{
+    width:10%;
+    height: 0px;
+    margin:auto;
+    position: absolute;
+
+    padding: 40px 0;
+    font-size: 16px;
+    opacity: 0.98;
+    background: rgba(245, 49, 49, 0.8);
+    border-radius:5px;
+    z-index: 1;
 }
 
 </style>

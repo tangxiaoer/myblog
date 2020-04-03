@@ -17,9 +17,11 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/incofont/iconfont.js'
 import './assets/incofont/inco.css'
+import LazyRender from 'vue-lazy-render'
 
 
 
+Vue.use(LazyRender)
 Vue.use(ElementUI);
 
 

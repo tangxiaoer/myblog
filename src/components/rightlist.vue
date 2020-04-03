@@ -47,7 +47,7 @@
             
          </div>
     </div>
-    <div class="likeme" :class='{fiexd:isFixed}' @click="likemec">
+    <div class="likeme"  @click="likemec">
         <div class="">
             <h1 class="liked" v-if="!firstlikeme">Thank You~</h1>
         <p class="giveme">
@@ -105,14 +105,15 @@ export default {
                }).then(function (response){
                    if(response.data=="1")
                    {
-                       _this.loadData()
+                        _this.likeNum[0].id=newliked
                    }
+
                })
-               _this.$axios.post('http://175.24.9.165:8001/insert_ipaddress',{
-                   ip:returnCitySN["cip"],
-                   city:returnCitySN["cname"]
-               }).then(function (response){
-               })
+            //    _this.$axios.post('http://175.24.9.165:8001/insert_ipaddress',{
+            //        ip:returnCitySN["cip"],
+            //        city:returnCitySN["cname"]
+            //    }).then(function (response){
+            //    })
 
             }
         },
