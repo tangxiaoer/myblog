@@ -176,9 +176,10 @@ export default {
     margin-bottom:20px;
     position: absolute;
     top:50px;
+    left:780px;
 }
 .loginBox {
-    background: #fff;
+    background:rgb(243, 242, 242);
     padding:40px;
     max-width:320px;
     margin:0 auto;
