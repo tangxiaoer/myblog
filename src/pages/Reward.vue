@@ -20,7 +20,7 @@
                 <p>赞赏记录:</p>
             </div>
          </div>
-        <noah-footer></noah-footer>
+        <!-- <noah-footer></noah-footer> -->
     </div>
 </template>
 

@@ -47,7 +47,7 @@
             
          </div>
     </div>
-    <div class="likeme"  @click="likemec">
+    <div class="likeme"  @click="likemec"  id="likemeFixed" :class="{'like_Fixed' : likeFixed}">
         <div class="">
             <h1 class="liked" v-if="!firstlikeme">Thank You~</h1>
         <p class="giveme">
@@ -65,7 +65,15 @@
         </div>
         </div>
     </div>
-    <div class="blank">
+    <div class="blank" id="boxFixed" :class="{'is_fixed' : isFixed}">
+        <p style="position:absolute;top:-10px;left:10px">Noah Chen • 版权所有</p>
+        <p style="position:absolute;top:20px;left:10px">技术栈 • VUE Python </p>
+        <p style="position:absolute;top:20px;left:180px"> | &nbsp;&nbsp;&nbsp;风格 • 借鉴各大网站</p>
+        <p style="position:absolute;top:50px;left:10px">托管于 腾讯云服务器 & 腾讯云数据库</p>
+        <p style="position:absolute;top:80px;left:10px">渝ICP备20002556号</p>
+        <p style="position:absolute;top:80px;left:180px"> |&nbsp;&nbsp;&nbsp;&nbsp;渝ICP备20002556号-1</p>
+        <p style="position:absolute;top:200px;left:10px">@2019 by Noah</p>
+        
     </div>
 </div>
 </template>
@@ -80,11 +88,16 @@ export default {
             firstlikeme: true,
             likedme:null,
             isFixed:false,
-            ip:''
+            likeFixed:false,
+            ip:'',
+            offsetTop:1000
         }
     },
     created(){
         this.loadData()
+    },
+    mounted(){     
+      window.addEventListener('scroll',this.initHeight);
     },
      watch: {
            // 如果路由有变化，会再次执行该方法
@@ -139,12 +152,19 @@ export default {
               this.isFixed = false
             }
         },
+        initHeight(){
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+            this.isFixed = scrollTop > this.offsetTop ? true : false;
+            this.likeFixed = scrollTop > this.offsetTop ? true : false;
+
+        }
     }
     
 }
 </script>
 
 <style>
+
 .myinfo{
     width:25%;
     height: 300px;
@@ -266,4 +286,34 @@ export default {
     position: relative;
     top:-30px;
 }
+.blank{
+    width:25%;
+    height: 300px;
+    margin:auto;
+    position: absolute;
+    top:1370px;
+    right:150px;
+    padding: 40px 0;
+    font-size: 16px;
+    opacity: 0.98;
+    background: rgb(243, 242, 242);
+    border-radius:5px;
+    z-index: 1;
+    overflow: hidden;
+}
+.blank p{
+    color:rgb(163, 163, 163);
+}
+.like_Fixed{
+    position: fixed;
+    top: 40px;
+    margin-left: -250px;
+    z-index: 999;
+  }
+.is_fixed{
+    position: fixed;
+    top: 300px;
+    margin-left: -250px;
+    z-index: 999;
+  }
 </style>

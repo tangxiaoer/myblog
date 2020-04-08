@@ -1,12 +1,15 @@
 <template>
-<div @click="hidesharelist" >
+<div @click="hidesharelist">
     <div class="title">
     </div>
     <div class="brother">
     </div>
-   <div class="textbox" v-for="(item,index) in list.slice(0,count)" :key="'article'+index">
+   <div class="textbox"  v-for="(item,index) in list.slice(0,count)" :key="'article'+index" :style="{top:`${450+index*12}px`}" >
        <div class="label">
            {{item.type}}
+       </div>
+       <div class="timeLabel">
+           {{item.createtime.slice(0,10)}}
        </div>
        <div class="shadow">
        </div>
@@ -30,15 +33,16 @@
             <svg class="inco" aria-hidden="true" style="left:560px;top:188px;" @click="sharelist">
               <use xlink:href="#icon-fenxiang"></use>
             </svg>
-            <p class="comment" style="left:590px"  >分享</p>
-            
+            <p class="comment" style="left:590px"  >分享</p>        
        </div>
-        <hr class="line">
+        <a class="read" href="javascript:void(0);" @click="readAll">阅读全文</a>
+
+        
    </div>
-   <div class="more" v-if="count<list.length" @click="loadMore">
+   <div class="more" :style="{top:`${520+index1*60}px`}" v-if="count<list.length" @click="loadMore">
        点击加载更多
    </div>
-   <div class="nomore" v-else>没有更多了</div>
+   <div class="nomore" :style="{top:`${500+index1*50}px`}" v-else>没有更多了</div>
    <div class="sharefriend" :style="{left: tranLeft, top: tranTop}" v-if="friendflag"  @click="settingEvent($event)">
    </div>
 </div>
@@ -59,7 +63,8 @@ export default {
             text:'',
             friendflag:false,
             tranLeft:'670px',
-            tranTop:'1070px'
+            tranTop:'1070px',
+            index1:0
         }
     },
     created(){
@@ -68,6 +73,7 @@ export default {
     methods:{
         loadMore:function(){
             this.count+=5;
+            this.index1+=1;
         },
         loadData()
         {            
@@ -101,6 +107,9 @@ export default {
         touchstart(e) {
             this.tranLeft = (e.pageX-75) + 'px'
 			this.tranTop = (e.pageY+20) + 'px'
+        },
+        readAll(){
+            alert("1111111111")
         }
 
     }
@@ -129,7 +138,7 @@ export default {
     height: 150px;
     margin:auto;
     position: relative;
-    top:450px;
+    top:500px;
     left:-209px;
     padding: 40px 0;
     font-size: 15px;
@@ -137,6 +146,7 @@ export default {
     background: rgba(255, 255, 255, 0.8);
     border-radius:5px;
     z-index: 1;
+
 }
 
 .textbox h1{
@@ -144,6 +154,8 @@ export default {
     left:5px;
     top:20px;
     font-size: 18px;
+    font-weight: 500;
+    color:rgb(4, 177, 4);
 }
 .abstract{
     position: absolute;
@@ -163,7 +175,7 @@ export default {
     border-color: #97dffd;
     -webkit-box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 1px 5px 0px rgba(0,0,0,0.12);
-    background-color:#97dffd;
+    background-color:red;
     margin:5px 0 15px 2px;
     font-size:14px;
     border-radius: 0 4px 4px 0;
@@ -174,6 +186,27 @@ export default {
     top:-10px;
     left:-20px;
     padding-left:18px!important;
+}
+.timeLabel{
+    border-color: #97dffd;
+    -webkit-box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 1px 5px 0px rgba(0,0,0,0.12);
+    background-color:#97dffd;
+    margin:5px 0 15px 2px;
+    font-size:14px;
+    border-radius: 0 4px 4px 0;
+    padding:7px 11.2px 7px 32px;
+    display: inline-block;
+    color:#fff;
+    position: absolute;
+    top:-10px;
+    left:700px;
+    padding-left:18px!important;
+}
+.read{
+    position: absolute;
+    top:190px;
+    left:700px;
 }
 .shadow{
     border-style: solid;
@@ -194,7 +227,7 @@ export default {
     position: relative;
     color:#fff;
     margin:auto;
-    bottom:-450px;
+    bottom:-750px;
     left:-209px;
     height:30px;
     -webkit-user-select:none;
@@ -212,7 +245,7 @@ export default {
     position: relative;
     color:rgb(250, 6, 6);
     margin:auto;
-    bottom:-450px;
+    top:450px;
     left:-210px;
     height:30px;
     -webkit-user-select:none;
@@ -254,7 +287,23 @@ export default {
     opacity: 0.98;
     background: rgba(245, 49, 49, 0.8);
     border-radius:5px;
-    z-index: 1;
+    z-index: 999999;
+}
+.readAll{
+    border-color: #97dffd;
+    -webkit-box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 1px 5px 0px rgba(0,0,0,0.12);
+    background-color:#97dffd;
+    margin:5px 0 15px 2px;
+    font-size:14px;
+    border-radius: 0 4px 4px 0;
+    padding:7px 11.2px 7px 32px;
+    display: inline-block;
+    color:#fff;
+    position: absolute;
+    top:190px;
+    left:650px;
+    padding-left:18px!important;
 }
 
 </style>

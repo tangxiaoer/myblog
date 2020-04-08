@@ -4,9 +4,10 @@
         <noah-toper></noah-toper>
         <noah-info></noah-info>
         <noah-main></noah-main>
-        <lazy-render :time="300">
+        <!-- <lazy-render :time="300">
         <noah-footer></noah-footer>
-        </lazy-render>
+        </lazy-render> -->
+        <iframe src="https://zhanyuzhang.github.io/lovely-cat/cat.html" class="cat" frameborder="0" @click="goTop()"></iframe>
     </div>
 </template>
 
@@ -38,6 +39,9 @@ export default {
                     } else {
                         clearTimeout(this.timer)
                     }
+         },
+         goTop(){
+             alert("11111111")
          }
     },
     components: { //定义组件
@@ -51,4 +55,9 @@ export default {
 </script>
 
 <style>
+.cat{
+    position: fixed;
+    top:600px;
+    left:-200px;
+}
 </style>
