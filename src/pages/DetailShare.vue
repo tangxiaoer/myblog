@@ -3,9 +3,7 @@
         <noah-header></noah-header>
         <noah-toper></noah-toper>
         <noah-info></noah-info>
-        <!-- <lazy-render :time="300">
-        <noah-footer></noah-footer>
-        </lazy-render> -->
+        {{list[0]}}
         <iframe src="https://zhanyuzhang.github.io/lovely-cat/cat.html" class="cat" frameborder="0" @click="goTop()"></iframe>
     </div>
 </template>
@@ -18,29 +16,24 @@ import footer from '../components/foter.vue'
 export default {
     data(){
         return{
-  
+            list:[]
         }
     },
     mounted(){
-         this.typing();
+        this.loadData()
     },
     methods:{
-        login(){
-            this.$router.push({ path:'/login'  });
-        },
-         typing() {
-                    if (this.i <= this.str.length) {
-                        this.str2 = this.str.slice(0, this.i++) + '_';
-                        this.timer = setTimeout(() => {
-                            this.typing();
-                        }, 200);
-                    } else {
-                        clearTimeout(this.timer)
-                    }
-         },
-         goTop(){
-             alert("11111111")
-         }
+        loadData(){
+            var _this=this
+            _this.$axios.post('http://175.24.9.165:8001/get_article',{
+                classid:"all"  
+            }).then(function (response){
+                _this.list=response.data
+                alert(_this.list[0].text)
+            }).catch(error=>{
+                console.log(error)
+            })
+        }
     },
     components: { //定义组件
             'noah-header':header,
