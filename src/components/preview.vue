@@ -35,7 +35,7 @@
             </svg>
             <p class="comment" style="left:590px"  >分享</p>        
        </div>
-        <a class="read" href="javascript:void(0);" @click="readAll">阅读全文</a>
+        <a class="read" :href="'#/DetailShare?aid='+item.id" target="_blank">阅读全文</a>
 
         
    </div>
@@ -148,7 +148,9 @@ export default {
     z-index: 1;
 
 }
-
+.textbox:hover{
+    background: rgb(235, 233, 233);
+}
 .textbox h1{
     position: absolute;
     left:5px;

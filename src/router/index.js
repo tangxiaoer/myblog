@@ -1,12 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/pages/Login'
-import Home from '@/pages/Home'
-import Aboutme from '@/pages/Aboutme'
-import Share from '@/pages/Share'
-import Reward from '@/pages/Reward'
-import Message from '@/pages/Message'
-import Userinfo from '@/pages/Userinfo'
+
 
 Vue.use(Router)
 
@@ -15,37 +9,48 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: resolve=> require(['@/pages/Login'],resolve)
     },
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: resolve=> require(['@/pages/Home'],resolve)
     },
     {
       path: '/aboutme',
       name: 'aboutme',
-      component: Aboutme
+      component: resolve=> require(['@/pages/Aboutme'],resolve)
     },
     {
       path: '/share',
       name: 'sharepage',
-      component: Share
+      component: resolve=> require(['@/pages/Share'],resolve)
     },
     {
       path: '/reward',
       name: 'rewardpage',
-      component: Reward
+      component: resolve=> require(['@/pages/Reward'],resolve)
     },
     {
       path: '/message',
       name: 'message',
-      component:Message
+      component:resolve=> require(['@/pages/Message'],resolve)
+
     },
     {
       path: '/userinfo',
       name: 'userinfo',
-      component:Userinfo
-    }
+      component:resolve=> require(['@/pages/Userinfo'],resolve)
+    },
+    {
+      path: '/detailshare',
+      name: 'detailshare',
+      component:resolve=> require(['@/pages/DetailShare'],resolve)
+    },
+    {
+      path: '/resource',
+      name: 'resource',
+      component:resolve=> require(['@/pages/Resource'],resolve)
+    },
   ]
 })

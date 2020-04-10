@@ -23,7 +23,7 @@
 						</el-submenu>
 
 
-						<el-menu-item index="3"> 
+						<el-menu-item index="/resource"> 
 							<svg class="icon" aria-hidden="true" style="color:white" width="200%" v-show="!loveme">
                                  <use xlink:href="#icon-baoxiang"></use>
                             </svg>学习资源</el-menu-item>

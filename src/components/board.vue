@@ -21,7 +21,7 @@
             <div class="time">{{item.datetime}}</div>
             <div class="message_show">{{item.message}}</div>
             <div class="answer"><a href="javascript:void(0);" @click="ans()">回复</a></div>
-            <hr class=line>
+            <el-divider class="line"></el-divider>
         </div>
      </div>
     <div class="more" v-if="count<list.length" @click="loadMore">

@@ -53,7 +53,8 @@ export default {
             username:'',
             userinfo:[],
             eidtbutton:'编辑',
-            editflag:false
+            editflag:false,
+            imageUrl: ''
         }
     },
     mounted(){
@@ -106,7 +107,7 @@ export default {
             }).catch(error=>{                
                 console.log(error)   
             })
-        }
+        } 
         
     },
     components: { //定义组件
@@ -136,6 +137,12 @@ export default {
     position: absolute;
     top:10px;
     left:50px;
+}
+.avatar-uploader{
+    position: absolute;
+    top:215px;
+    left:150px;
+    z-index: 99999;
 }
 .edit{
     position: absolute;
@@ -201,4 +208,6 @@ export default {
     width:20%;
     height:20px;
 }
+
+ 
 </style>

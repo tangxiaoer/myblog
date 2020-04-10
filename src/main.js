@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
 // 引用API文件
 import axios from 'axios';
@@ -13,12 +15,11 @@ Vue.prototype.$qs=qs;
 Vue.use(VueParticles);
 Vue.use(VueResource);
 Vue.config.productionTip = false
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 import './assets/incofont/iconfont.js'
 import './assets/incofont/inco.css'
 import LazyRender from 'vue-lazy-render'
-
+import infiniteScroll from 'vue-infinite-scroll'
+Vue.use(infiniteScroll)
 
 
 Vue.use(LazyRender)

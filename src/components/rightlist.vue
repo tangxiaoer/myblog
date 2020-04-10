@@ -94,7 +94,9 @@ export default {
         }
     },
     created(){
-        this.loadData()
+        setTimeout(() => {
+            this.loadData()
+        }, 200);
     },
     mounted(){     
       window.addEventListener('scroll',this.initHeight);
@@ -156,7 +158,6 @@ export default {
             var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
             this.isFixed = scrollTop > this.offsetTop ? true : false;
             this.likeFixed = scrollTop > this.offsetTop ? true : false;
-
         }
     }
     
