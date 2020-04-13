@@ -3,7 +3,9 @@
         <noah-header></noah-header>
         <noah-toper></noah-toper>
         <noah-info></noah-info>
-        {{list[0]}}
+        <div class="title">
+            <div v-html="list[0].text" style="line-height:30px;"></div>
+        </div>
         <iframe src="https://zhanyuzhang.github.io/lovely-cat/cat.html" class="cat" frameborder="0" @click="goTop()"></iframe>
     </div>
 </template>
@@ -25,11 +27,11 @@ export default {
     methods:{
         loadData(){
             var _this=this
-            _this.$axios.post('http://175.24.9.165:8001/get_article',{
-                classid:"all"  
+            let id = this.$route.query.aid
+            _this.$axios.post('http://175.24.9.165:8001/get_detail',{
+                id:id 
             }).then(function (response){
                 _this.list=response.data
-                alert(_this.list[0].text)
             }).catch(error=>{
                 console.log(error)
             })
@@ -49,5 +51,25 @@ export default {
     position: fixed;
     top:600px;
     left:-200px;
+
+}
+.maininfo{
+    position: absolute;
+    top:0px;
+}
+.title{
+    width:55%;
+    height: auto;
+    margin:auto;
+    position: relative;
+    top:410px;
+    left:-209px;
+    padding: 40px 0;
+    font-size: 16px;
+    opacity: 0.98;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius:5px;
+    z-index: 1;
+    text-align: left;
 }
 </style>
