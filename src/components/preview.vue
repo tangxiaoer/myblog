@@ -4,6 +4,7 @@
     </div>
     <div class="brother">
     </div>
+    <div class="infinite-list">
    <div class="textbox"  v-for="(item,index) in list.slice(0,count)" :key="'article'+index" :style="{top:`${450+index*12}px`}" >
        <div class="label">
            {{item.type}}
@@ -13,7 +14,7 @@
        </div>
        <div class="shadow">
        </div>
-       <h1>{{item.title}}</h1>
+       <a :href="'#/DetailShare?aid='+item.id" target="_blank"><h1>{{item.title}}</h1></a>
        <div class="abstract">
            {{item.abstract}}
        </div>
@@ -30,15 +31,16 @@
               <use xlink:href="#icon-taoxin"></use>
             </svg>
             <p class="comment" style="left:490px">喜欢{{item.clike}}</p>
-            <svg class="inco" aria-hidden="true" style="left:560px;top:188px;" @click="sharelist">
+            <svg class="inco" aria-hidden="true" style="left:560px;top:188px;" >
               <use xlink:href="#icon-fenxiang"></use>
             </svg>
-            <p class="comment" style="left:590px"  >分享</p>        
+            <p class="comment" style="left:590px"  @click="sharelist">分享</p>        
        </div>
         <a class="read" :href="'#/DetailShare?aid='+item.id" target="_blank">阅读全文</a>
 
         
    </div>
+    </div>
    <div class="more" :style="{top:`${520+index1*60}px`}" v-if="count<list.length" @click="loadMore">
        点击加载更多
    </div>
@@ -64,14 +66,14 @@ export default {
             friendflag:false,
             tranLeft:'670px',
             tranTop:'1070px',
-            index1:0
+            index1:0,
         }
     },
     created(){
         this.loadData();//需要触发的函数
     },
     methods:{
-        loadMore:function(){
+        loadMore(){
             this.count+=5;
             this.index1+=1;
         },

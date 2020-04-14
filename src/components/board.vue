@@ -12,7 +12,7 @@
         </el-input>
         <el-button class="submit" @click="sendmsg">发送</el-button>
         <div class="msginfo"><p>|</p></div>
-        <div class="number"><p>共:{{list[0].id}}条</p></div>
+        <div class="number"><p>共:{{list.length}}条</p></div>
     </div>
     <div class="show">
         <div class="showbox" v-for="(item,index) in list.slice(0,count)" :key="'article'+index">
@@ -39,7 +39,8 @@ export default {
             list:[],
             count:10,
             answerflag:true,
-            username:''
+            username:'',
+            typeid:'all'
         }
     },
     created(){
@@ -49,6 +50,8 @@ export default {
         sendmsg(){
             //get 请求接口            
             var _this=this;  
+            let id = this.$route.query.aid 
+            _this.typeid=id==undefined?"all":id
             if(sessionStorage.getItem('haslogin')!='1')
             {
                 _this.username='游客';
@@ -62,7 +65,8 @@ export default {
             }else{
                  _this.$axios.post('http://175.24.9.165:8001/insert_msg',{
                       txt: _this.textarea,     
-                      usr:_this.username
+                      usr:_this.username,
+                      typeid:_this.typeid
              })           
              .then(function (response) {
                  if(response.data=='1')
@@ -82,8 +86,11 @@ export default {
             
         },
         loadData(){
-            var _this=this;           
-             _this.$axios.post('http://175.24.9.165:8001/get_msg',{           
+            var _this=this;
+            let id = this.$route.query.aid 
+            _this.typeid=id==undefined?"all":id
+             _this.$axios.post('http://175.24.9.165:8001/get_msg',{
+                 aid:_this.typeid          
              })           
              .then(function (response) {
                 // _this.title=response.data[0]['title']

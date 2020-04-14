@@ -24,7 +24,7 @@
                 {{item.abstract}}
             </div>
              <div class="bar" @click="settingEvent($event)">
-            <svg class="inco" aria-hidden="true">
+            <svg class="inco"  aria-hidden="true">
                 <use xlink:href="#icon-xiaoxi"></use>
             </svg>
               <P class="comment">122条评论</p>

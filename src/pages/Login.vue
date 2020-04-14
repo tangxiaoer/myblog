@@ -36,9 +36,7 @@
         <el-input v-model="username" v-show="isuser" placeholder="账号"></el-input>
         <el-input v-model="password" type="password" v-show="ispsw" placeholder="密码"></el-input>
         <el-input v-model="checkc" placeholder="验证码" class="checkco"></el-input>
-        <svg class="iconF5" aria-hidden="true" @click="createCode">
-            <use xlink:href="#icon-NMStubiao-"></use>
-        </svg>
+
         <div class="checkimg"></div>
         <p class="showcode">{{checkCode}}</p>
         <p v-if="error" class="error">{{errorinfo}}</p>
@@ -279,20 +277,7 @@ export default {
     font-weight: bold;
     width:19%;
 }
-.iconF5{
-    width:30px;
-    height:30px;
-    position: absolute;
-    top:230px;
-    left:200px;
-    color:blue;
-    background: rgb(145, 255, 0);
-}
-.iconF5:hover{
-    color:red;
-    background: red;
-    cursor:pointer;
-}
+
 .lr-title p{
     font-size: 12px;
     color:#999;

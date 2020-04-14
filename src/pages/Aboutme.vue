@@ -3,10 +3,7 @@
        <noah-header></noah-header>
        <noah-toper></noah-toper>
        <noah-info></noah-info>
-        <noah-main></noah-main>
-        <lazy-render :time="300">
-        <noah-footer></noah-footer>
-        </lazy-render>
+
     </div>
 </template>
 
@@ -14,8 +11,6 @@
 import header from '../components/header.vue'
 import toper from '../components/top.vue'
 import rightlist from '../components/rightlist.vue'
-import footer from '../components/foter.vue'
-import main from '../components/preview.vue'
 export default {
     data(){
         return{
@@ -28,9 +23,7 @@ export default {
     components: { //定义组件
             'noah-header':header,
             'noah-toper':toper,
-            'noah-info':rightlist,
-            'noah-main':main,
-            'noah-footer':footer
+            'noah-info':rightlist
     },
     methods:{
         load(){
